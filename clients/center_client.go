@@ -21,7 +21,7 @@ func GetCenterClient() (pb_mani.GinCenterServiceClient, error) {
 
 func connectCenter() (pb_mani.GinCenterServiceClient, error) {
 	cf := conf.GetConfig()
-	address := fmt.Sprintf("%s%s", cf.Server.Ip, cf.Client.Center)
+	address := fmt.Sprintf("localhost%s", cf.Client.Center)
 	conn, err := grpc.Dial(address, grpc.WithInsecure())
 	if err != nil {
 		log.Fatalf("center service client connect err: ", err)
