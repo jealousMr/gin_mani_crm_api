@@ -1,0 +1,8 @@
+server:
+  port: ":8081"
+  ip: "47.93.22.146"
+
+client:
+  user: ":8088"
+  center: ":8089"
+  engine: ":8087"
