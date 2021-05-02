@@ -20,7 +20,7 @@ type Configs struct {
 
 func GetConfig() *Configs{
 	config := &Configs{}
-	content, err := ioutil.ReadFile("/Users/mjea/go/src/gin_mani_crm_api/conf/meta.yaml")
+	content, err := ioutil.ReadFile("/home/xyl/src/gin_mani_crm_api/conf/meta.yaml")
 	if err != nil {
 		log.Fatalf("解析config.yaml读取错误: %v", err)
 	}

@@ -21,7 +21,7 @@ func GetEngineClient() (pb_mani.GinEngineServiceClient, error) {
 
 func connectEngine() (pb_mani.GinEngineServiceClient, error) {
 	cf := conf.GetConfig()
-	address := fmt.Sprintf("%s%s", cf.Server.Ip, cf.Server.Port)
+	address := fmt.Sprintf("%s%s", cf.Server.Ip, cf.Client.Engine)
 	conn, err := grpc.Dial(address, grpc.WithInsecure())
 	if err != nil {
 		log.Fatalf("engine service client connect err: ", err)
