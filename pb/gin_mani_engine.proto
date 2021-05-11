@@ -22,15 +22,27 @@ message FileUriToServerResp{
   BaseResp base_resp = 255;
 }
 
+enum CrmType{
+  unknown_crm = 0;
+  user_crm = 1;
+  sys_crm = 2;
+}
+
+message CrmUrl {
+  string tag = 1;
+  string url = 2;
+  string name = 3;
+  CrmType crm_type = 4;
+}
+
 message FileUriToCrmReq{
-  string save_url = 1;
-  string file_name = 2;
-  FileAction file_action = 3;
+  repeated CrmUrl crm_list = 1;
+  FileAction file_action = 2;
   Base base = 255;
 }
 
 message FileUriToCrmResp{
-  string url = 1;
+  map<string,string> tag_url_map = 1;
   BaseResp base_resp = 255;
 }
 
@@ -40,6 +52,7 @@ message CreateTaskReq{
 }
 
 message CreateTaskResp{
+  string task_id = 1;
   BaseResp base_resp = 255;
 }
 
@@ -64,6 +77,16 @@ message UpdateTaskResp{
   BaseResp base_resp = 255;
 }
 
+message GetTaskByRulesReq{
+  repeated string rule_list = 1;
+  Base base = 255;
+}
+
+message GetTaskByRulesResp{
+  map<string,Task> rule_task_map = 1;
+  BaseResp base_resp = 255;
+}
+
 service GinEngineService{
   rpc FileUriToServer(FileUriToServerReq)returns(FileUriToServerResp); // 获得文件的存储位置
   rpc FileUriToCrm(FileUriToCrmReq) returns (FileUriToCrmResp); // 将内部地址转化为前端地址
@@ -71,4 +94,6 @@ service GinEngineService{
   rpc CreateTask(CreateTaskReq) returns(CreateTaskResp);
   rpc QueryTaskByCondition(QueryTaskByConditionReq) returns (QueryTaskByConditionResp);
   rpc UpdateTask(UpdateTaskReq) returns(UpdateTaskResp);
+
+  rpc GetTaskByRules(GetTaskByRulesReq) returns(GetTaskByRulesResp);
 }

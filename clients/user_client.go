@@ -21,7 +21,7 @@ func GetUserClient() (pb_mani.GinUserServiceClient, error) {
 
 func connectUser() (pb_mani.GinUserServiceClient, error) {
 	cf := conf.GetConfig()
-	address := fmt.Sprintf("localhost%s", cf.Client.User)
+	address := fmt.Sprintf("%s%s",cf.Server.Ip, cf.Client.User)
 	conn, err := grpc.Dial(address, grpc.WithInsecure())
 	if err != nil {
 		log.Fatalf("user service client connect err: ", err)

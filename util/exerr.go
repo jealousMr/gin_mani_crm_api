@@ -7,4 +7,6 @@ const (
 	CLIENT_ERROR = "get rpc client error"
 	JSON_ERROR = "json parse error"
 	SUCCESS = "success"
+
+	INVALID_USER = "invalid user"
 )

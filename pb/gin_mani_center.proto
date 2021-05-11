@@ -5,19 +5,19 @@ package pb_mani;
 
 
 message AddRuleReq{
-    Rule rule = 1;
-    Base base = 255;
+  Rule rule = 1;
+  Base base = 255;
 }
 
 message AddRuleResp{
-   BaseResp base_resp = 255;
+  BaseResp base_resp = 255;
 }
 
 message GetRuleByRuleTypeReq{
-   RuleType rule_type = 1;
-   int64 page_no = 2;
-   int64 page_size = 3;
-   Base base = 255;
+  RuleType rule_type = 1;
+  int64 page_no = 2;
+  int64 page_size = 3;
+  Base base = 255;
 }
 message GetRuleByRuleTypeResp{
   repeated Rule rule_list = 1;
@@ -47,12 +47,21 @@ message UpdateRuleReq{
   string desc_text = 5; // 文字描述
   string source_url = 6; // 图片链接/地址
   string source_name = 7; //图片名字
-  string source_file = 8; // 图片文件
-  FileState source_state = 9;
+  FileState source_state = 8;
   Base base = 255;
 }
 
 message UpdateRuleResp{
+  BaseResp base_resp = 255;
+}
+
+message ExecuteRuleReq{
+  Rule rule = 1;
+  Base base = 255;
+}
+
+message ExecuteRuleResp{
+  string task_id = 1;
   BaseResp base_resp = 255;
 }
 
@@ -63,4 +72,6 @@ service GinCenterService{
   rpc GetRuleByRuleType(GetRuleByRuleTypeReq) returns(GetRuleByRuleTypeResp);
   rpc GetRuleByCondition(GetRuleByConditionReq) returns(GetRuleByConditionResp);
   rpc UpdateRule(UpdateRuleReq) returns(UpdateRuleResp);
+
+  rpc ExecuteRule(ExecuteRuleReq) returns(ExecuteRuleResp);
 }

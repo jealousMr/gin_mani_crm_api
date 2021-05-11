@@ -131,6 +131,116 @@ func (x *AddAndUpdateUserInfoResp) GetBaseResp() *BaseResp {
 	return nil
 }
 
+type QueryUserInfoByIdsReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	IdList []string `protobuf:"bytes,1,rep,name=id_list,json=idList,proto3" json:"id_list,omitempty"`
+	Base   *Base    `protobuf:"bytes,255,opt,name=base,proto3" json:"base,omitempty"`
+}
+
+func (x *QueryUserInfoByIdsReq) Reset() {
+	*x = QueryUserInfoByIdsReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_gin_mani_user_proto_msgTypes[2]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *QueryUserInfoByIdsReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*QueryUserInfoByIdsReq) ProtoMessage() {}
+
+func (x *QueryUserInfoByIdsReq) ProtoReflect() protoreflect.Message {
+	mi := &file_gin_mani_user_proto_msgTypes[2]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use QueryUserInfoByIdsReq.ProtoReflect.Descriptor instead.
+func (*QueryUserInfoByIdsReq) Descriptor() ([]byte, []int) {
+	return file_gin_mani_user_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *QueryUserInfoByIdsReq) GetIdList() []string {
+	if x != nil {
+		return x.IdList
+	}
+	return nil
+}
+
+func (x *QueryUserInfoByIdsReq) GetBase() *Base {
+	if x != nil {
+		return x.Base
+	}
+	return nil
+}
+
+type QueryUserInfoByIdsResp struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Users    []*UserInfo `protobuf:"bytes,1,rep,name=users,proto3" json:"users,omitempty"`
+	BaseResp *BaseResp   `protobuf:"bytes,255,opt,name=base_resp,json=baseResp,proto3" json:"base_resp,omitempty"`
+}
+
+func (x *QueryUserInfoByIdsResp) Reset() {
+	*x = QueryUserInfoByIdsResp{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_gin_mani_user_proto_msgTypes[3]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *QueryUserInfoByIdsResp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*QueryUserInfoByIdsResp) ProtoMessage() {}
+
+func (x *QueryUserInfoByIdsResp) ProtoReflect() protoreflect.Message {
+	mi := &file_gin_mani_user_proto_msgTypes[3]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use QueryUserInfoByIdsResp.ProtoReflect.Descriptor instead.
+func (*QueryUserInfoByIdsResp) Descriptor() ([]byte, []int) {
+	return file_gin_mani_user_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *QueryUserInfoByIdsResp) GetUsers() []*UserInfo {
+	if x != nil {
+		return x.Users
+	}
+	return nil
+}
+
+func (x *QueryUserInfoByIdsResp) GetBaseResp() *BaseResp {
+	if x != nil {
+		return x.BaseResp
+	}
+	return nil
+}
+
 var File_gin_mani_user_proto protoreflect.FileDescriptor
 
 var file_gin_mani_user_proto_rawDesc = []byte{
@@ -148,14 +258,33 @@ var file_gin_mani_user_proto_rawDesc = []byte{
 	0x6e, 0x66, 0x6f, 0x52, 0x65, 0x73, 0x70, 0x12, 0x2f, 0x0a, 0x09, 0x62, 0x61, 0x73, 0x65, 0x5f,
 	0x72, 0x65, 0x73, 0x70, 0x18, 0xff, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x11, 0x2e, 0x70, 0x62,
 	0x5f, 0x6d, 0x61, 0x6e, 0x69, 0x2e, 0x42, 0x61, 0x73, 0x65, 0x52, 0x65, 0x73, 0x70, 0x52, 0x08,
-	0x62, 0x61, 0x73, 0x65, 0x52, 0x65, 0x73, 0x70, 0x32, 0x6d, 0x0a, 0x0e, 0x47, 0x69, 0x6e, 0x55,
-	0x73, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x5b, 0x0a, 0x14, 0x41, 0x64,
-	0x64, 0x41, 0x6e, 0x64, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x55, 0x73, 0x65, 0x72, 0x49, 0x6e,
-	0x66, 0x6f, 0x12, 0x20, 0x2e, 0x70, 0x62, 0x5f, 0x6d, 0x61, 0x6e, 0x69, 0x2e, 0x41, 0x64, 0x64,
-	0x41, 0x6e, 0x64, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x55, 0x73, 0x65, 0x72, 0x49, 0x6e, 0x66,
-	0x6f, 0x52, 0x65, 0x71, 0x1a, 0x21, 0x2e, 0x70, 0x62, 0x5f, 0x6d, 0x61, 0x6e, 0x69, 0x2e, 0x41,
-	0x64, 0x64, 0x41, 0x6e, 0x64, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x55, 0x73, 0x65, 0x72, 0x49,
-	0x6e, 0x66, 0x6f, 0x52, 0x65, 0x73, 0x70, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x62, 0x61, 0x73, 0x65, 0x52, 0x65, 0x73, 0x70, 0x22, 0x54, 0x0a, 0x15, 0x51, 0x75, 0x65, 0x72,
+	0x79, 0x55, 0x73, 0x65, 0x72, 0x49, 0x6e, 0x66, 0x6f, 0x42, 0x79, 0x49, 0x64, 0x73, 0x52, 0x65,
+	0x71, 0x12, 0x17, 0x0a, 0x07, 0x69, 0x64, 0x5f, 0x6c, 0x69, 0x73, 0x74, 0x18, 0x01, 0x20, 0x03,
+	0x28, 0x09, 0x52, 0x06, 0x69, 0x64, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x22, 0x0a, 0x04, 0x62, 0x61,
+	0x73, 0x65, 0x18, 0xff, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x0d, 0x2e, 0x70, 0x62, 0x5f, 0x6d,
+	0x61, 0x6e, 0x69, 0x2e, 0x42, 0x61, 0x73, 0x65, 0x52, 0x04, 0x62, 0x61, 0x73, 0x65, 0x22, 0x72,
+	0x0a, 0x16, 0x51, 0x75, 0x65, 0x72, 0x79, 0x55, 0x73, 0x65, 0x72, 0x49, 0x6e, 0x66, 0x6f, 0x42,
+	0x79, 0x49, 0x64, 0x73, 0x52, 0x65, 0x73, 0x70, 0x12, 0x27, 0x0a, 0x05, 0x75, 0x73, 0x65, 0x72,
+	0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x11, 0x2e, 0x70, 0x62, 0x5f, 0x6d, 0x61, 0x6e,
+	0x69, 0x2e, 0x55, 0x73, 0x65, 0x72, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x05, 0x75, 0x73, 0x65, 0x72,
+	0x73, 0x12, 0x2f, 0x0a, 0x09, 0x62, 0x61, 0x73, 0x65, 0x5f, 0x72, 0x65, 0x73, 0x70, 0x18, 0xff,
+	0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x11, 0x2e, 0x70, 0x62, 0x5f, 0x6d, 0x61, 0x6e, 0x69, 0x2e,
+	0x42, 0x61, 0x73, 0x65, 0x52, 0x65, 0x73, 0x70, 0x52, 0x08, 0x62, 0x61, 0x73, 0x65, 0x52, 0x65,
+	0x73, 0x70, 0x32, 0xc4, 0x01, 0x0a, 0x0e, 0x47, 0x69, 0x6e, 0x55, 0x73, 0x65, 0x72, 0x53, 0x65,
+	0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x5b, 0x0a, 0x14, 0x41, 0x64, 0x64, 0x41, 0x6e, 0x64, 0x55,
+	0x70, 0x64, 0x61, 0x74, 0x65, 0x55, 0x73, 0x65, 0x72, 0x49, 0x6e, 0x66, 0x6f, 0x12, 0x20, 0x2e,
+	0x70, 0x62, 0x5f, 0x6d, 0x61, 0x6e, 0x69, 0x2e, 0x41, 0x64, 0x64, 0x41, 0x6e, 0x64, 0x55, 0x70,
+	0x64, 0x61, 0x74, 0x65, 0x55, 0x73, 0x65, 0x72, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x65, 0x71, 0x1a,
+	0x21, 0x2e, 0x70, 0x62, 0x5f, 0x6d, 0x61, 0x6e, 0x69, 0x2e, 0x41, 0x64, 0x64, 0x41, 0x6e, 0x64,
+	0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x55, 0x73, 0x65, 0x72, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x65,
+	0x73, 0x70, 0x12, 0x55, 0x0a, 0x12, 0x51, 0x75, 0x65, 0x72, 0x79, 0x55, 0x73, 0x65, 0x72, 0x49,
+	0x6e, 0x66, 0x6f, 0x42, 0x79, 0x49, 0x64, 0x73, 0x12, 0x1e, 0x2e, 0x70, 0x62, 0x5f, 0x6d, 0x61,
+	0x6e, 0x69, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x55, 0x73, 0x65, 0x72, 0x49, 0x6e, 0x66, 0x6f,
+	0x42, 0x79, 0x49, 0x64, 0x73, 0x52, 0x65, 0x71, 0x1a, 0x1f, 0x2e, 0x70, 0x62, 0x5f, 0x6d, 0x61,
+	0x6e, 0x69, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x55, 0x73, 0x65, 0x72, 0x49, 0x6e, 0x66, 0x6f,
+	0x42, 0x79, 0x49, 0x64, 0x73, 0x52, 0x65, 0x73, 0x70, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f,
+	0x33,
 }
 
 var (
@@ -170,25 +299,32 @@ func file_gin_mani_user_proto_rawDescGZIP() []byte {
 	return file_gin_mani_user_proto_rawDescData
 }
 
-var file_gin_mani_user_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_gin_mani_user_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_gin_mani_user_proto_goTypes = []interface{}{
 	(*AddAndUpdateUserInfoReq)(nil),  // 0: pb_mani.AddAndUpdateUserInfoReq
 	(*AddAndUpdateUserInfoResp)(nil), // 1: pb_mani.AddAndUpdateUserInfoResp
-	(*UserInfo)(nil),                 // 2: pb_mani.UserInfo
-	(*Base)(nil),                     // 3: pb_mani.Base
-	(*BaseResp)(nil),                 // 4: pb_mani.BaseResp
+	(*QueryUserInfoByIdsReq)(nil),    // 2: pb_mani.QueryUserInfoByIdsReq
+	(*QueryUserInfoByIdsResp)(nil),   // 3: pb_mani.QueryUserInfoByIdsResp
+	(*UserInfo)(nil),                 // 4: pb_mani.UserInfo
+	(*Base)(nil),                     // 5: pb_mani.Base
+	(*BaseResp)(nil),                 // 6: pb_mani.BaseResp
 }
 var file_gin_mani_user_proto_depIdxs = []int32{
-	2, // 0: pb_mani.AddAndUpdateUserInfoReq.user_info:type_name -> pb_mani.UserInfo
-	3, // 1: pb_mani.AddAndUpdateUserInfoReq.base:type_name -> pb_mani.Base
-	4, // 2: pb_mani.AddAndUpdateUserInfoResp.base_resp:type_name -> pb_mani.BaseResp
-	0, // 3: pb_mani.GinUserService.AddAndUpdateUserInfo:input_type -> pb_mani.AddAndUpdateUserInfoReq
-	1, // 4: pb_mani.GinUserService.AddAndUpdateUserInfo:output_type -> pb_mani.AddAndUpdateUserInfoResp
-	4, // [4:5] is the sub-list for method output_type
-	3, // [3:4] is the sub-list for method input_type
-	3, // [3:3] is the sub-list for extension type_name
-	3, // [3:3] is the sub-list for extension extendee
-	0, // [0:3] is the sub-list for field type_name
+	4, // 0: pb_mani.AddAndUpdateUserInfoReq.user_info:type_name -> pb_mani.UserInfo
+	5, // 1: pb_mani.AddAndUpdateUserInfoReq.base:type_name -> pb_mani.Base
+	6, // 2: pb_mani.AddAndUpdateUserInfoResp.base_resp:type_name -> pb_mani.BaseResp
+	5, // 3: pb_mani.QueryUserInfoByIdsReq.base:type_name -> pb_mani.Base
+	4, // 4: pb_mani.QueryUserInfoByIdsResp.users:type_name -> pb_mani.UserInfo
+	6, // 5: pb_mani.QueryUserInfoByIdsResp.base_resp:type_name -> pb_mani.BaseResp
+	0, // 6: pb_mani.GinUserService.AddAndUpdateUserInfo:input_type -> pb_mani.AddAndUpdateUserInfoReq
+	2, // 7: pb_mani.GinUserService.QueryUserInfoByIds:input_type -> pb_mani.QueryUserInfoByIdsReq
+	1, // 8: pb_mani.GinUserService.AddAndUpdateUserInfo:output_type -> pb_mani.AddAndUpdateUserInfoResp
+	3, // 9: pb_mani.GinUserService.QueryUserInfoByIds:output_type -> pb_mani.QueryUserInfoByIdsResp
+	8, // [8:10] is the sub-list for method output_type
+	6, // [6:8] is the sub-list for method input_type
+	6, // [6:6] is the sub-list for extension type_name
+	6, // [6:6] is the sub-list for extension extendee
+	0, // [0:6] is the sub-list for field type_name
 }
 
 func init() { file_gin_mani_user_proto_init() }
@@ -222,6 +358,30 @@ func file_gin_mani_user_proto_init() {
 				return nil
 			}
 		}
+		file_gin_mani_user_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*QueryUserInfoByIdsReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_gin_mani_user_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*QueryUserInfoByIdsResp); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -229,7 +389,7 @@ func file_gin_mani_user_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_gin_mani_user_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
@@ -256,6 +416,7 @@ const _ = grpc.SupportPackageIsVersion6
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type GinUserServiceClient interface {
 	AddAndUpdateUserInfo(ctx context.Context, in *AddAndUpdateUserInfoReq, opts ...grpc.CallOption) (*AddAndUpdateUserInfoResp, error)
+	QueryUserInfoByIds(ctx context.Context, in *QueryUserInfoByIdsReq, opts ...grpc.CallOption) (*QueryUserInfoByIdsResp, error)
 }
 
 type ginUserServiceClient struct {
@@ -275,9 +436,19 @@ func (c *ginUserServiceClient) AddAndUpdateUserInfo(ctx context.Context, in *Add
 	return out, nil
 }
 
+func (c *ginUserServiceClient) QueryUserInfoByIds(ctx context.Context, in *QueryUserInfoByIdsReq, opts ...grpc.CallOption) (*QueryUserInfoByIdsResp, error) {
+	out := new(QueryUserInfoByIdsResp)
+	err := c.cc.Invoke(ctx, "/pb_mani.GinUserService/QueryUserInfoByIds", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // GinUserServiceServer is the server API for GinUserService service.
 type GinUserServiceServer interface {
 	AddAndUpdateUserInfo(context.Context, *AddAndUpdateUserInfoReq) (*AddAndUpdateUserInfoResp, error)
+	QueryUserInfoByIds(context.Context, *QueryUserInfoByIdsReq) (*QueryUserInfoByIdsResp, error)
 }
 
 // UnimplementedGinUserServiceServer can be embedded to have forward compatible implementations.
@@ -286,6 +457,9 @@ type UnimplementedGinUserServiceServer struct {
 
 func (*UnimplementedGinUserServiceServer) AddAndUpdateUserInfo(context.Context, *AddAndUpdateUserInfoReq) (*AddAndUpdateUserInfoResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AddAndUpdateUserInfo not implemented")
+}
+func (*UnimplementedGinUserServiceServer) QueryUserInfoByIds(context.Context, *QueryUserInfoByIdsReq) (*QueryUserInfoByIdsResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method QueryUserInfoByIds not implemented")
 }
 
 func RegisterGinUserServiceServer(s *grpc.Server, srv GinUserServiceServer) {
@@ -310,6 +484,24 @@ func _GinUserService_AddAndUpdateUserInfo_Handler(srv interface{}, ctx context.C
 	return interceptor(ctx, in, info, handler)
 }
 
+func _GinUserService_QueryUserInfoByIds_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryUserInfoByIdsReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(GinUserServiceServer).QueryUserInfoByIds(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/pb_mani.GinUserService/QueryUserInfoByIds",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(GinUserServiceServer).QueryUserInfoByIds(ctx, req.(*QueryUserInfoByIdsReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _GinUserService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "pb_mani.GinUserService",
 	HandlerType: (*GinUserServiceServer)(nil),
@@ -317,6 +509,10 @@ var _GinUserService_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "AddAndUpdateUserInfo",
 			Handler:    _GinUserService_AddAndUpdateUserInfo_Handler,
+		},
+		{
+			MethodName: "QueryUserInfoByIds",
+			Handler:    _GinUserService_QueryUserInfoByIds_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

@@ -16,14 +16,21 @@ func UserLogin(c *gin.Context) {
 		c.JSON(http.StatusExpectationFailed, gin.H{"msg": util.BIND_PARAM_ERROR})
 		return
 	}
-	userClient, err := clients.GetUserClient()
+	user_rpc, err := clients.GetUserClient()
 	if err != nil {
 		logx.Errorf("UserLogin get userClient error:%v", err)
 		c.JSON(http.StatusExpectationFailed, gin.H{"msg": util.CLIENT_ERROR})
 		return
 	}
-	_, err = userClient.AddAndUpdateUserInfo(c, &pb_mani.AddAndUpdateUserInfoReq{
-		UserInfo: userInfo,
+	_, err = user_rpc.AddAndUpdateUserInfo(c, &pb_mani.AddAndUpdateUserInfoReq{
+		UserInfo: &pb_mani.UserInfo{
+			UserId: userInfo.OpenId,
+			NickName: userInfo.NickName,
+			AvatarUrl: userInfo.AvatarUrl,
+			Gender: userInfo.Gender,
+			Country: userInfo.Country,
+			UserState: pb_mani.UserState_user_state_valid,
+		},
 	})
 	if err != nil {
 		logx.Errorf("UserLogin AddAndUpdateUserInfo error:%v", err)
@@ -34,11 +41,19 @@ func UserLogin(c *gin.Context) {
 	return
 }
 
-func bindUserRegisterParam(c *gin.Context) (*pb_mani.UserInfo, error) {
-	obj := make(map[string]pb_mani.UserInfo)
+func bindUserRegisterParam(c *gin.Context) (*UserLoginParam, error) {
+	obj := make(map[string]UserLoginParam)
 	if err := c.BindJSON(&obj); err != nil {
 		return nil, err
 	}
 	param := obj["user_info"]
 	return &param, nil
+}
+
+type UserLoginParam struct {
+	OpenId string `json:"open_id"`
+	NickName string `json:"nick_name"`
+	AvatarUrl string `json:"avatar_url"`
+	Gender int64 `json:"gender"`
+	Country string `json:"country"`
 }

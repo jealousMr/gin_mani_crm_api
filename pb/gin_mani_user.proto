@@ -12,7 +12,18 @@ message AddAndUpdateUserInfoResp{
   BaseResp base_resp = 255;
 }
 
+message QueryUserInfoByIdsReq{
+  repeated string id_list = 1;
+  Base base = 255;
+}
+message QueryUserInfoByIdsResp{
+  repeated UserInfo users = 1;
+  BaseResp base_resp = 255;
+}
+
 
 service GinUserService{
   rpc AddAndUpdateUserInfo(AddAndUpdateUserInfoReq) returns(AddAndUpdateUserInfoResp);
+  rpc QueryUserInfoByIds(QueryUserInfoByIdsReq) returns(QueryUserInfoByIdsResp);
+
 }
